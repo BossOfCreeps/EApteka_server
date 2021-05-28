@@ -84,4 +84,5 @@ class Order(models.Model):
 
 class OrderProduct(models.Model):
     product = models.ForeignKey(Product, models.CASCADE, "order_products")
-    order = models.ForeignKey(Order, models.CASCADE, "products")
+    order = models.ForeignKey(Order, models.CASCADE, "order_products")
+    count = models.IntegerField(default=0)

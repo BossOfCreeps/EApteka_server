@@ -1,13 +1,13 @@
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from account.authentication import CustomAuthentication
+from catalog.models import Order
+from catalog.serializers import OrderSerializer
 
 
-class IsConstructor(APIView):
-    authentication_classes = [CustomAuthentication]
-    permission_classes = [IsAuthenticated]
+class Test(APIView):
+    #authentication_classes = [CustomAuthentication]
+    #permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        return Response({"status": request.user.is_constructor})
+        return Response({"status": OrderSerializer(Order.objects.first()).data})

@@ -3,7 +3,7 @@ from rest_framework import serializers
 from account.models import CustomUser
 
 
-class CustomUserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     username = serializers.CharField()
 
