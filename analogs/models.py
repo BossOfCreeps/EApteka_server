@@ -5,8 +5,8 @@ from catalog.models import Product, Order
 
 ANALOG_TYPES = [
     ("inactive", 'Неактивен'),
-    ("set", 'Выбран'),
-    ("unset", 'Невыбран'),
+    ("selected", 'Выбран'),
+    ("unselected", 'Невыбран'),
 ]
 
 RECEPTION_TIMES = [
@@ -19,9 +19,9 @@ RECEPTION_TIMES = [
 
 
 class AnalogsSet(models.Model):
-    user = models.ForeignKey(CustomUser, models.CASCADE, "analogs_set", null=True, blank=True)
+    user = models.ForeignKey(CustomUser, models.CASCADE, "analogs_sets", null=True, blank=True)
     datetime = models.DateTimeField(auto_now=True)
-    order = models.ForeignKey(Order, models.CASCADE, "analogs_set", null=True, blank=True)
+    order = models.ForeignKey(Order, models.CASCADE, "analogs_sets", null=True, blank=True)
 
 
 class AnalogProduct(models.Model):

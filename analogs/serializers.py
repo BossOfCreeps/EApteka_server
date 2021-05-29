@@ -1,35 +1,29 @@
 from rest_framework import serializers
 
-from analogs.models import AnalogsSet
-"""
+from analogs.models import AnalogsSet, AnalogProduct
+from catalog.serializers import OrderSerializer, ProductSerializer
+
 
 class AnalogProductSerializer(serializers.ModelSerializer):
-
-        set = models.ForeignKey(AnalogsSet, models.CASCADE, "analogs")
-    product = models.ForeignKey(Product, models.CASCADE, "as_analog")
-    type = models.CharField(max_length=16, choices=ANALOG_TYPES, default=ANALOG_TYPES[0][0])
-    number_of_times = models.IntegerField()
-    reception_time = models.CharField(max_length=16, choices=RECEPTION_TIMES, default=RECEPTION_TIMES[0][0])
-    pieces_at_time = models.IntegerField()
-    date_start = models.DateField()
-    date_end = models.DateField()
-    text = models.TextField()
-
     product = ProductSerializer()
     type = serializers.CharField()
-    analogs = AnalogProductSerializer()
+    number_of_times = serializers.IntegerField()
+    reception_time = serializers.CharField()
+    pieces_at_time = serializers.IntegerField()
+    date_start = serializers.DateField()
+    date_end = serializers.DateField()
+    text = serializers.CharField()
 
     class Meta:
-        model = AnalogsSet
-        exclude = ('set', )
+        model = AnalogProduct
+        exclude = ["set",]
 
 
-class UserSerializer(serializers.ModelSerializer):
+class AnalogsSetSerializer(serializers.ModelSerializer):
     datetime = serializers.DateTimeField()
     order = OrderSerializer()
-    analogs = AnalogProductSerializer(multiple=True)
+    analogs = AnalogProductSerializer(many=True)
 
     class Meta:
         model = AnalogsSet
-        fields = ['datetime', 'email', 'profile']
-"""
+        fields = ["datetime", "order", "analogs"]

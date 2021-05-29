@@ -37,6 +37,14 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ['base', 'size', 'price', 'text', 'img']
 
 
+class BaseProductPlusSerializer(BaseProductSerializer):
+    products = ProductSerializer(many=True)
+
+    class Meta:
+        model = BaseProduct
+        fields = ['id', 'name', 'ingredient', 'form', 'application_method', 'products']
+
+
 class OrderProductSerializer(serializers.ModelSerializer):
     product = ProductSerializer()
     count = serializers.IntegerField()
