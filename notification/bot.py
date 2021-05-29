@@ -1,10 +1,6 @@
 # http://t.me/invalid_syntax_eapteka_Bot
 import telegram
 
-from account.models import CustomUser
-from catalog.models import Order
-from notification.models import TimeNotification
-
 telegram_bot = telegram.Bot("1813927589:AAGFJAN96LQXE4n190Akzn4V9SJ9azYwsdw")
 
 
@@ -13,7 +9,7 @@ def tg_send(user, text):
         telegram_bot.send_message(user.telegram_id, text, parse_mode="markdown")
 
 
-def tg_storage_rules(user: CustomUser, order: Order):
+def tg_storage_rules(user, order):
     if user.telegram_id:
         text = "Здравствуйте. Вы только что купили товары в ЕАптеке. Мы бы хотели рассказать вам о правилах их " \
                "хранения, чтобы они не испортились и не навредили вашему здоровью.\n\n"
@@ -23,9 +19,9 @@ def tg_storage_rules(user: CustomUser, order: Order):
         tg_send(user, text)
 
 
-def tg_notification(user: CustomUser, event: TimeNotification):
+def tg_notification(user, product):
     if user.telegram_id:
-        text = f"Здравствуйте. Напоминаем принять вам *{event.set.product.product}* \n" \
-               f"Способ: {event.set.product.set.reception_method.name.lower()}, " \
-               f"{event.set.product.set.get_reception_time_display().lower()}"
+        text = f"Здравствуйте. Напоминаем принять вам *{product.product}* \n" \
+               f"Способ: {product.set.reception_method.name.lower()}, " \
+               f"{product.set.get_reception_time_display().lower()}"
         tg_send(user, text)

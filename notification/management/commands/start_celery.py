@@ -16,9 +16,10 @@ class Command(BaseCommand):
             time=time(hour=15, minute=15),
             celery=PeriodicTask.objects.create(
                 name=f'Call notification {"".join(choices(ascii_uppercase + digits, k=100))}',
-                task="eapteka.celery.call_notification",
+                task="eapteka.celery.test",
                 # interval=IntervalSchedule.objects.get_or_create(every=1, period='days')[0],
-                interval=IntervalSchedule.objects.get_or_create(every=2, period='minutes')[0],
+                interval=IntervalSchedule.objects.get_or_create(every=20, period='seconds')[0],
                 start_time=now(),
+
             )
         )
