@@ -39,3 +39,6 @@ http://90.188.90.101:8000/api/analogs/select_analog
   "analog_product_id": "1"
 }
 ```
+
+Get notifications for day  
+http://90.188.90.101:8000/api/notification/day_notification?date=01/06/2021  

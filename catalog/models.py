@@ -48,9 +48,10 @@ class BaseProduct(models.Model):
     ingredient = models.ForeignKey(Ingredient, models.CASCADE, "base_products")
     form = models.ForeignKey(Form, models.CASCADE, "base_products")
     application_method = models.ForeignKey(ApplicationMethod, models.CASCADE, "base_products")
+    storage = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.name} {self.form}"
 
     class Meta:
         verbose_name = verbose_name_plural = "Базовый продукт"

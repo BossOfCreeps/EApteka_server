@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='notification',
             name='analogs',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='notifications', to='analogs.analogproduct'),
+            field=models.ForeignKey(blank=True, null=True, unique=True, on_delete=django.db.models.deletion.CASCADE, related_name='notifications', to='analogs.analogproduct'),
         ),
     ]
