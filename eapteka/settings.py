@@ -144,8 +144,8 @@ APPEND_SLASH = False
 
 # Celery
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://90.188.90.101:6379'
+CELERY_RESULT_BACKEND = 'redis://90.188.90.101:6379'
 
 TEST_URL = "http://90.188.90.101:8000/"
 
