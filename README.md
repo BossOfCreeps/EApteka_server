@@ -13,7 +13,13 @@ Add analogs card
 http://90.188.90.101:8000/api/analogs/add  
 ```json
 {
-  "products": '[{"product": "1", "number_of_times": "5", "reception_time": "before_eating", "pieces_at_time": "1", "date_start": "2021-06-29", "date_end": "2021-05-29", "type": "inactive", "text": "comment" }]'
+  "products": '[{"product": "1", "type": "inactive" }]',
+  "number_of_times": "5",
+  "days": "4",
+  "reception_method": "1",
+  "reception_time": "before_eating",
+  "dosage": "209",
+  "text": "209", 
 }
 ```
 

@@ -70,7 +70,7 @@ class Add(APIView):
     # permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        form = AnalogsSetForm(CustomUser.objects.first(), request.POST, instance=None)
+        form = AnalogsSetForm(CustomUser.objects.first(), request.POST, request.FILES, instance=None)
         if form.is_valid():
             form.save()
         return Response()
