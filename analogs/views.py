@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from account.models import CustomUser
 from analogs.forms import AnalogsSetForm
 from analogs.models import ANALOG_TYPES, RECEPTION_TIMES, AnalogsSet, AnalogProduct
-from catalog.models import BaseProduct, Ingredient
+from catalog.models import BaseProduct, Ingredient, Order, OrderProduct
 from catalog.serializers import BaseProductSerializer, IngredientSerializer, BaseProductPlusSerializer
 from analogs.serializers import AnalogsSetSerializer
 
@@ -25,15 +25,16 @@ class AnalogsSetPage(APIView):
         return Response(AnalogsSetSerializer(AnalogsSet.objects.get(id=request.GET.get("set_id"))).data)
 
 
-class AnalogsSelect(APIView):
+class AnalogToBasket(APIView):
     # authentication_classes = [CustomAuthentication]
     # permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        selected_analog = AnalogProduct.objects.get(id=request.POST.get("analog_product_id"))
-        for set_analog in selected_analog.set.analogproducts.all():
-            set_analog.type = "selected" if set_analog == selected_analog else "unselected"
+        sel_analog = AnalogProduct.objects.get(id=request.POST.get("analog_product_id"))
+        for set_analog in sel_analog.set.analogproducts.all():
+            set_analog.type = "selected" if set_analog == sel_analog else "unselected"
             set_analog.save()
+        OrderProduct.objects.create(product=sel_analog.product, order=Order.objects.get_or_create(type="basket")[0])
         return Response()
 
 
@@ -61,8 +62,7 @@ class DropDownValues(APIView):
     # permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        return Response({"types": ANALOG_TYPES,
-                         "times": RECEPTION_TIMES})
+        return Response(RECEPTION_TIMES)
 
 
 class Add(APIView):

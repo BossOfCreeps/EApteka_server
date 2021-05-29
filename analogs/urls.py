@@ -7,7 +7,7 @@ urlpatterns = [
     path('/all', views.AnalogsSetAll.as_view()),
     # analogs set page
     path('/set', views.AnalogsSetPage.as_view()),
-    path('/select_analog', views.AnalogsSelect.as_view()),
+    path('/to_backet', views.AnalogToBasket.as_view()),
     # add analogs page
     path('/products_by_name', views.ProductsByName.as_view()),
     path('/list_by_ingredient', views.AnalogListByIngredient.as_view()),

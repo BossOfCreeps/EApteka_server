@@ -5,8 +5,7 @@ from analogs.models import AnalogProduct
 
 
 class Notification(models.Model):
-    user = models.ForeignKey(CustomUser, models.CASCADE, "notifications")
-    product = models.ForeignKey(AnalogProduct, models.CASCADE, "notifications")
+    product = models.ForeignKey(AnalogProduct, models.CASCADE, "notifications", null=True, blank=True)
 
 
 class TimeNotification(models.Model):
