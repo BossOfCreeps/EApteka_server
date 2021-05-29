@@ -13,7 +13,7 @@ Add analogs card
 http://90.188.90.101:8000/api/analogs/add  
 ```json
 {
-  "products": '[{"product": "1", "type": "inactive" }]',
+  "products": ["1", "2", "3"],
   "number_of_times": "5",
   "days": "4",
   "reception_method": "1",

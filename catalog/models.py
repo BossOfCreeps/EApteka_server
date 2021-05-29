@@ -79,7 +79,7 @@ ORDER_TYPE = [
 class Order(models.Model):
     user = models.ForeignKey(CustomUser, models.CASCADE, "orders")
     datetime = models.DateTimeField(auto_now=True)
-    type = models.CharField(max_length=16, choices=ORDER_TYPE, default=ORDER_TYPE[0][0])
+    type = models.CharField(max_length=16, choices=ORDER_TYPE, null=True, blank=True)
 
 
 class OrderProduct(models.Model):

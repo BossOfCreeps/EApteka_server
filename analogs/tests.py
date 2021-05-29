@@ -12,10 +12,15 @@ class YourTestClass(TestCase):
     def setUpTestData(cls):
         pass
 
-    def test_create_analogs(self):
+    def test_add_analog_set(self):
         data = {
-            "products": '[{"product": "1", "number_of_times": "5", "reception_time": "before_eating", '
-                        '"pieces_at_time": "1", "date_start": "2021-06-29", "date_end": "2021-05-29", '
-                        '"type": "inactive", "text": "comment" }] '
+            "products": ["1"],
+            "number_of_times": "5",
+            "days": "4",
+            "reception_method": "1",
+            "reception_time": "before_eating",
+            "dosage": "209",
+            "text": "text",
         }
         response = post(f"{TEST_URL}api/analogs/add", data=data)
+        self.assertEqual(response.status_code, 200)
