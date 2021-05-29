@@ -22,7 +22,7 @@ class NotificationForm(forms.ModelForm):
                     task="eapteka.celery.call_notification",
                     interval=IntervalSchedule.objects.get_or_create(every=1, period='days')[0],
                     start_time=datetime(date.year, date.month, date.day, time.hour, time.minute),
-                    args={"product_id": notification.product.id}
+                    args=[notification.product.id]
                 )
             )
 
