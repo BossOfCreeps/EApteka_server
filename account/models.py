@@ -19,7 +19,7 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractUser):
-    username = models.CharField("Имя", max_length=512, unique=True)
+    username = models.CharField("Имя", max_length=255, unique=True)
     telegram_id = models.IntegerField("Telegram ID", blank=True, null=True)
 
     first_name = None

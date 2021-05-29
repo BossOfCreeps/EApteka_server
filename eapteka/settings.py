@@ -138,3 +138,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'account.CustomUser'
 
 APPEND_SLASH = False
+
+TEST_URL = "http://90.188.90.101:8000/"

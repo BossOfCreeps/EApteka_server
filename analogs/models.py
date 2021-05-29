@@ -1,5 +1,6 @@
 from django.db import models
 
+from account.models import CustomUser
 from catalog.models import Product, Order
 
 ANALOG_TYPES = [
@@ -18,8 +19,9 @@ RECEPTION_TIMES = [
 
 
 class AnalogsSet(models.Model):
+    user = models.ForeignKey(CustomUser, models.CASCADE, "analogs_set", null=True, blank=True)
     datetime = models.DateTimeField(auto_now=True)
-    order = models.ForeignKey(Order, models.CASCADE, "analogs_set")
+    order = models.ForeignKey(Order, models.CASCADE, "analogs_set", null=True, blank=True)
 
 
 class AnalogProduct(models.Model):

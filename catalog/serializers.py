@@ -4,15 +4,25 @@ from account.serializers import UserSerializer
 from catalog.models import Product, BaseProduct, Order, OrderProduct
 
 
-class BaseProductSerializer(serializers.ModelSerializer):
+class IngredientSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
     name = serializers.CharField()
-    ingredient = serializers.CharField()
+
+    class Meta:
+        model = BaseProduct
+        fields = ['id', 'name']
+
+
+class BaseProductSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    name = serializers.CharField()
+    ingredient = IngredientSerializer()
     form = serializers.CharField()
     application_method = serializers.CharField()
 
     class Meta:
         model = BaseProduct
-        fields = ['name', 'ingredient', 'form', 'application_method']
+        fields = ['id', 'name', 'ingredient', 'form', 'application_method']
 
 
 class ProductSerializer(serializers.ModelSerializer):
