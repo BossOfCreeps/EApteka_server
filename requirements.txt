@@ -8,3 +8,4 @@ django-cors-headers
 django_celery_results
 djangorestframework-simplejwt
 redis
+python-telegram-bot

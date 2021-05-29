@@ -65,7 +65,7 @@ class Product(models.Model):
     img = models.ImageField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.base} {self.size} {self.price}"
+        return f"{self.base} {self.size}"
 
     class Meta:
         verbose_name = verbose_name_plural = "Продукт"

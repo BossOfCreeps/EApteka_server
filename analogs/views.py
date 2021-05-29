@@ -53,8 +53,8 @@ class AnalogListByIngredient(APIView):
     # permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        return Response(
-            BaseProductPlusSerializer(BaseProduct.objects.get(ingredient_id=request.GET.get("ingredient_id"))).data)
+        return Response(BaseProductPlusSerializer(
+            BaseProduct.objects.get(ingredient_id=request.GET.get("ingredient_id"))).data)
 
 
 class DropDownValues(APIView):
