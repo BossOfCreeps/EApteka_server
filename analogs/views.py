@@ -43,9 +43,10 @@ class ProductsByName(APIView):
     # permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        products = BaseProduct.objects.filter(name__icontains=request.GET.get("q"))
-        return Response({"products": [BaseProductSerializer(product).data for product in products],
-                         "ingredients": [IngredientSerializer(ing).data for ing in Ingredient.objects.all()]})
+        return Response({"products": [BaseProductSerializer(product).data
+                                      for product in BaseProduct.objects.filter(name__icontains=request.GET.get("q"))],
+                         "ingredients": [IngredientSerializer(ing).data
+                                         for ing in Ingredient.objects.filter(name__icontains=request.GET.get("q"))]})
 
 
 class AnalogListByIngredient(APIView):

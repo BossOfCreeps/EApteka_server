@@ -33,7 +33,7 @@ Get all analogs set page
 http://90.188.90.101:8000/api/analogs/all  
 
 Select analog in analog sets  
-http://90.188.90.101:8000/api/analogs/select_analog  
+http://90.188.90.101:8000/api/analogs/to_backet  
 ```json
 {
   "analog_product_id": "1"
@@ -42,3 +42,9 @@ http://90.188.90.101:8000/api/analogs/select_analog
 
 Get notifications for day  
 http://90.188.90.101:8000/api/notification/day_notification?date=01/06/2021  
+
+Design  
+https://www.figma.com/file/2kGjq8YY9mgEs2kUvhnWEm/hackathon-%2F-eAptekahack?node-id=4%3A1654  
+
+Frontend  
+https://github.com/fedkam/invalid-syntax
